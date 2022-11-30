@@ -1,6 +1,5 @@
-const fs = require("fs");
-
-class Contenedor {
+import * as fs from "fs";
+export class Contenedor {
   constructor(nombre) {
     this.nombre = nombre;
   }
@@ -8,6 +7,7 @@ class Contenedor {
   async save(objeto) {
     const archivo = await fs.promises.readFile(this.nombre, "utf-8");
     const archivoParseado = JSON.parse(archivo);
+
     let id = 1;
     archivoParseado.forEach((element, index) => {
       if (element.id >= id) {
@@ -16,6 +16,7 @@ class Contenedor {
     });
     objeto.id = id;
     console.log(objeto.id);
+
     archivoParseado.push(objeto);
     await fs.promises.writeFile(
       this.nombre,
@@ -24,7 +25,7 @@ class Contenedor {
     return id;
   }
 
-  async getById() {
+  async getById(id) {
     const archivo = await fs.promises.readFile(this.nombre, "utf-8");
     const archivoParseado = JSON.parse(archivo);
     console.log(await archivoParseado);
@@ -62,6 +63,28 @@ class Contenedor {
     }
   }
 
+  async update(id, objeto) {
+    const archivo = await fs.promises.readFile(this.nombre, "utf-8");
+    const archivoParseado = JSON.parse(archivo);
+    let posicion = -1;
+    archivoParseado.forEach((producto, index) => {
+      if (producto.id == id) {
+        posicion = index;
+      }
+    });
+
+    objeto.id = id;
+    console.log(objeto.id);
+    if ((posicion) => 0) {
+      archivoParseado[posicion] = objeto;
+      await fs.promises.writeFile(
+        this.nombre,
+        JSON.stringify(archivoParseado, null, 2)
+      );
+      return objeto.id;
+    }
+  }
+
   async deleteAll() {
     const arregloVacio = [];
     await fs.promises.writeFile(
@@ -70,5 +93,3 @@ class Contenedor {
     );
   }
 }
-
-module.exports = Contenedor;

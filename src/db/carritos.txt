@@ -1,0 +1,25 @@
+[
+  {
+    "id":1,
+    "timestamp": 1668647566189,
+    "productos": [{
+      "nombre": "tomates",
+      "descripcion": "tomates",
+      "timestamp": 1668647566189,
+      "codigo": "1234567890",
+      "price": 100,
+      "stock": 20,
+      "foto": "https://www.comedera.com/wp-content/uploads/2022/04/Papas-rusticas-shutterstock_20222419jpg",
+      "id": 1
+  }, {
+    "nombre": "tomates",
+    "descripcion": "tomates",
+    "timestamp": 1668647566189,
+    "codigo": "1234567890",
+    "price": 100,
+    "stock": 20,
+    "foto": "https://www.comedera.com/wp-content/uploads/2022/04/Papas-rusticas-shutterstock_2022241940.jpg",
+    "id": 1
+    }]
+  }
+]
