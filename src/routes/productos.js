@@ -25,7 +25,11 @@ rutaProducto.get("/", async (peticion, respuesta) => {
   respuesta.json(listaProductos);
 });
 
-rutaProducto.get("/:id", (peticion, respuesta) => {});
+rutaProducto.get("/:id", async (peticion, respuesta) => {
+  const idProducto = parseInt(peticion.params.id);
+  const listaId = await productos.getById(idProducto);
+  respuesta.json(listaId);
+});
 
 rutaProducto.post("/", privilegio, (peticion, respuesta) => {});
 
@@ -36,6 +40,10 @@ rutaProducto.put("/:id", privilegio, async (peticion, respuesta) => {
   respuesta.json(producto);
 });
 
-rutaProducto.delete("/:id", privilegio, (peticion, respuesta) => {});
+rutaProducto.delete("/:id", privilegio, async (peticion, respuesta) => {
+  const idProducto = parseInt(peticion.params.id);
+  const deleteListId = await productos.deleteById(idProducto);
+  respuesta.json(deleteListId);
+});
 
 export { rutaProducto };
