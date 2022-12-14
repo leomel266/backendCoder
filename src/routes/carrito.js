@@ -1,12 +1,15 @@
 /* -------Ruta de productos------- */
 import express from "express";
-import { Contenedor } from "../contenedor/contenedorFs.js";
+// import { Contenedor } from "../contenedor/contenedorFs.js";
+import ContenedorCarritos from "../daos/carritos/carritosDaoFs";
+import ContenedorProductos from "../daos/productos/productosDaoFs";
+
 const rutaCarrito = express.Router();
 
 /* --------------------- */
 
-const carritos = new Contenedor("src/db/carritos.txt");
-const productos = new Contenedor("src/db/productos.txt");
+const carritos = new ContenedorCarritos();
+const productos = new ContenedorProductos();
 
 /*------- EndPoints ------- */
 

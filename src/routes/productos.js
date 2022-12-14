@@ -1,11 +1,12 @@
 /* -------Ruta de productos------- */
 import express from "express";
-import { Contenedor } from "../contenedor/contenedorFs.js";
+// import { Contenedor } from "../contenedor/contenedorFs.js";
+import Contenedor from "../daos/productos/productosDaoFs";
 const rutaProducto = express.Router();
 
 /* --------------------- */
 
-const productos = new Contenedor("src/db/productos.txt");
+const productos = new Contenedor();
 
 const privilegio = (peticion, respuesta, next) => {
   const administrador = peticion.headers.administrador;
