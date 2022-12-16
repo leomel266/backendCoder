@@ -1,9 +1,9 @@
-import { Contenedor } from "../../contenedor/contenedorMemoria";
+import { Contenedor } from "../../contenedor/contenedorMemoria.js";
 
-class ProductosDaoFs extends Contenedor {
+class ProductosDaoMemoria extends Contenedor {
   constructor() {
     super([]);
   }
 }
 
-export default ProductosDaoFs;
+export default ProductosDaoMemoria;
